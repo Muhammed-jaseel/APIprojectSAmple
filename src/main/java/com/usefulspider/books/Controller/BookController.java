@@ -3,6 +3,7 @@ package com.usefulspider.books.Controller;
 import com.usefulspider.books.entity.Book;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -25,8 +26,11 @@ public class BookController {
     }
 
     @GetMapping("api/book")
-    public List<Book> getBooks(){
-        return books;
+    public List<Book> getBooks(@RequestParam(required = false) String Category){
+        if (Category == null){
+            return books;
+        }
+        return books.stream().filter(book -> book.getCategory().equalsIgnoreCase(Category)).toList();
     }
 
     @GetMapping("api/book/{title}")

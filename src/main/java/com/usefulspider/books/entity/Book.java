@@ -3,11 +3,12 @@ package com.usefulspider.books.entity;
 public class Book {
     private String title;
     private String author;
+    private String category;
 
-    public Book(String title, String author, String publisher) {
+    public Book(String title, String author, String category) {
         this.title = title;
         this.author = author;
-        this.publisher = publisher;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -26,14 +27,11 @@ public class Book {
         this.author = author;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getCategory() {
+        return category;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setCategory(String category) {
+        this.category = category;
     }
-
-    private String publisher;
-
 }
